@@ -26,17 +26,133 @@ public class StringOps {
     }
 
     public static String capVowelsLowRest (String string) {
-        // Write your code here:
-        return "";
+       
+        String vowels="aeiou";
+        String str ="";
+        for (int i = 1; i < string.length(); i++) {
+            char  check=string.charAt(i);
+            if (!(vowels.indexOf(check)==-1)) {
+                str=str+ (char)(check-32);
+            }else  {
+                str+=check;
+            }
+
+        }
+
+
+        return str;
     }
 
     public static String camelCase (String string) {
-        // Write your code here:
-        return "";
+        
+        int count=0;
+        String str ="";
+        boolean stop=true;
+        boolean first=true;
+        int firstlet=0;
+        //takes care of short words
+        if (str.length()==1) {
+            char  check=string.charAt(1);
+            if (check>='A'&&check<='Z') {
+                return str=str+ (char)(check+32);
+
+            }
+
+            return string;
+        }
+        //delete the first spaces
+        for (int i = 0; i < string.length(); i++) {
+            char  check=string.charAt(i);
+            if (check==' ') {
+                count++;
+            }
+        }
+        //takes the first letter to small
+        char  check1=string.charAt(count+1);
+        if ((check1>='A'&&check1<='Z')) {
+            
+            str=str+ (char)(check1+32);
+
+        }else  {
+            str+=check1;
+        }
+        //change the  first word to small  letters
+        for (int i = count+2; i < string.length()&&stop; i++) 
+        {
+            char  check=string.charAt(i);
+
+            if ((check==' ')) {
+                stop=false;
+            }else if ((check>='A'&&check<='Z')){
+        
+                str=str+ (char)(check1+32);
+                count++;
+
+            }else{
+
+                str+=check;
+                count++;
+                
+            }
+            
+            
+
+        }
+        //advance to the rest of the words and changes the first leeter only to capital
+        for (int i = count+1; i < string.length(); i++) 
+        {
+            char  check=string.charAt(i);
+            if ((!(check==' '))) {
+                if (firstlet==0) {
+                    if ((check>='a'&&check<='z')) {
+                        str=str+ (char)(check1-32);
+                        firstlet++;
+        
+                    }else  {
+                        str+=check;
+                        firstlet++;
+                    }
+                }else if ((check>='A'&&check<='Z')) {
+                    str=str+ (char)(check1+32);
+                }else{
+                    str+=check;
+                }
+
+                
+            }else{
+                firstlet=0;
+            }
+
+           
+        }
+
+
+
+        return str;
     }
 
     public static int[] allIndexOf (String string, char chr) {
-        // Write your code here:
-        return new int[1];
+
+        int len=0;
+        for (int i = 0; i < string.length(); i++) 
+        {
+            char  check=string.charAt(i);
+            if (check==chr) {
+                len++;
+
+            }
+        }
+        int[] loc=new int[len];
+        for (int i = 0; i < string.length(); i++) 
+        {
+            char  check=string.charAt(i);
+            if (check==chr) {
+                loc[i]=i;
+
+            }
+        }
+
+
+        return loc;
     }
 }
