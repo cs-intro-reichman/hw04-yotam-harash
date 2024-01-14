@@ -29,7 +29,7 @@ public class StringOps {
        
         String vowels="aeiou";
         String str ="";
-        for (int i = 1; i < string.length(); i++) {
+        for (int i = 0; i < string.length(); i++) {
             char  check=string.charAt(i);
             if (!(vowels.indexOf(check)==-1)) {
                 str=str+ (char)(check-32);

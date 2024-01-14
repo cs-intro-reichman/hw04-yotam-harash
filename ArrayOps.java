@@ -13,7 +13,7 @@ public class ArrayOps {
         for (int i=0;i<array.length;i++)
         { 
             if (!(isExs(array, i))) {
-                missing=array[i];
+                return i;
             }
             
         }
