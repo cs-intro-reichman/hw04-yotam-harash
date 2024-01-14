@@ -63,32 +63,30 @@ public class StringOps {
 
             return string;
         }
-        //delete the first spaces
-        for (int i = 0; i < string.length(); i++) {
-            char  check=string.charAt(i);
-            if (check==' ') {
-                count++;
-            }
-        }
-        //takes the first letter to small
-        char  check1=string.charAt(count+1);
-        if ((check1>='A'&&check1<='Z')) {
-            
-            str=str+ (char)(check1+32);
-
-        }else  {
-            str+=check1;
-        }
-        //change the  first word to small  letters
-        for (int i = count+2; i < string.length()&&stop; i++) 
+        //delete first spaces
+        for (int i = 0; i < string.length()&&first; i++) 
         {
             char  check=string.charAt(i);
+            if (!(check==' ')) {
+                first=false;
+                
 
+            }else{
+                count++;
+            }
+
+        }
+        //change the  first word to small  letters
+        for (int i = count+1; i < string.length()&&stop; i++) 
+        {
+            char  check=string.charAt(i);
             if ((check==' ')) {
                 stop=false;
-            }else if ((check>='A'&&check<='Z')){
+                break;
+            }
+            if ((check>='A'&&check<='Z')){
         
-                str=str+ (char)(check1+32);
+                str=str+ (char)(check+32);
                 count++;
 
             }else{
@@ -101,14 +99,14 @@ public class StringOps {
             
 
         }
-        //advance to the rest of the words and changes the first leeter only to capital
+        //advance to the rest of the words and changes the first letter only to capital
         for (int i = count+1; i < string.length(); i++) 
         {
             char  check=string.charAt(i);
             if ((!(check==' '))) {
                 if (firstlet==0) {
                     if ((check>='a'&&check<='z')) {
-                        str=str+ (char)(check1-32);
+                        str=str+ (char)(check-32);
                         firstlet++;
         
                     }else  {
@@ -116,7 +114,7 @@ public class StringOps {
                         firstlet++;
                     }
                 }else if ((check>='A'&&check<='Z')) {
-                    str=str+ (char)(check1+32);
+                    str=str+ (char)(check+32);
                 }else{
                     str+=check;
                 }
@@ -137,9 +135,10 @@ public class StringOps {
     public static int[] allIndexOf (String string, char chr) {
 
         int len=0;
+        int index=0;
         for (int i = 0; i < string.length(); i++) 
         {
-            char  check=string.charAt(i);
+            char check=string.charAt(i);
             if (check==chr) {
                 len++;
 
@@ -150,7 +149,8 @@ public class StringOps {
         {
             char  check=string.charAt(i);
             if (check==chr) {
-                loc[i]=i;
+                loc[index]=i;
+                index++;
 
             }
         }
