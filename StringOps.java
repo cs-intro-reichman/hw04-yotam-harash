@@ -33,8 +33,11 @@ public class StringOps {
             char  check=string.charAt(i);
             if (!(vowels.indexOf(check)==-1)) {
                 str=str+ (char)(check-32);
-            }else  {
-                str+=check;
+            }else if (check>='A'&&check<='Z') {
+                str=str+ (char)(check+32);
+            }else {
+                str+=str;
+
             }
 
         }
