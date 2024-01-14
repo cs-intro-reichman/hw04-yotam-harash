@@ -31,14 +31,19 @@ public class StringOps {
         String str ="";
         for (int i = 0; i < string.length(); i++) {
             char  check=string.charAt(i);
-            if (!(vowels.indexOf(check)==-1)) {
-                str=str+ (char)(check-32);
-            }else if (check>='A'&&check<='Z') {
-                str=str+ (char)(check+32);
-            }else {
+            if (!(check==' ')) {
+                if (!(vowels.indexOf(check)==-1)) {
+                    str=str+ (char)(check-32);
+                }else if (check>='A'&&check<='Z') {
+                    str=str+ (char)(check+32);
+                }else {
+                    str+=str;
+    
+                }
+            }else{
                 str+=str;
-
             }
+           
 
         }
 
