@@ -26,7 +26,7 @@ public class StringOps {
     }
 
     public static String capVowelsLowRest (String string){
-        String vowels = "aeiou";
+        String vowels = "aeiouAEIOU";
         String str ="";
         for (int i = 0; i < string.length(); i++) {
             char check = string.charAt(i);
@@ -74,7 +74,7 @@ public class StringOps {
         {
             char  check=string.charAt(i);
             if (!(check==' ')) {
-                first=false;
+                break;
                 
 
             }else{
