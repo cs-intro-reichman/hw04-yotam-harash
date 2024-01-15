@@ -72,7 +72,7 @@ public class StringOps {
         }
         //delete first spaces
         char  checkforspaces=string.charAt(spacecount);
-        while (!(checkforspaces==' ')) {
+        while ((checkforspaces==' ')) {
             checkforspaces++;
             
         }
