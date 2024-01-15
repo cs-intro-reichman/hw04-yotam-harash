@@ -52,28 +52,44 @@ public class StringOps {
     }
     
 
-    public static String camelCase (String string) {
-        
-       
-      String result = "";
-      boolean newWord = true;
-        
-      for (int i = 0; i < string.length(); i++) {
-                char c = string.charAt(i);
-                if (c == ' ') {
-                    newWord = true;
-                } else {
-                    if (newWord) {
-                        result += Character.toUpperCase(c);
-                        newWord = false;
-                    } else {
-                        result += Character.toLowerCase(c);
+    public static String camelCase(String string) {
+        String result = "";
+        boolean newWord = true;
+    
+        for (int i = 0; i < string.length(); i++) {
+            char c = string.charAt(i);
+            if (c == ' ') {
+                newWord = true;
+            } else {
+                if (newWord && result=="") {
+                    if (c>='A'&&c<='Z') {
+                        result=result+((char)(c + 32));
+                    }else  {
+                        result+=c;
                     }
+                    
+                    newWord = false;
+                } else if (newWord) {
+                    if (c>='a'&&c<='z') {
+                        result=result+((char)(c - 32));
+                    }else  {
+                        result+=c;
+                    }
+                    newWord = false;
+                } else {
+                    if (c>='A'&&c<='Z') {
+                        result=result+((char)(c + 32));
+                    }else  {
+                        result+=c;
+                    }
+                    
                 }
-         }
-        
-            return result;
+            }
+        }
+    
+        return result;
     }
+    
         
 
     public static int[] allIndexOf (String string, char chr) {
