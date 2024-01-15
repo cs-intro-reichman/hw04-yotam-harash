@@ -59,6 +59,7 @@ public class StringOps {
         boolean stop=true;
         boolean first=true;
         int firstlet=0;
+        int spacecount=0;
         //takes care of short words
         if (str.length()==1) {
             char  check=string.charAt(1);
@@ -70,26 +71,17 @@ public class StringOps {
             return string;
         }
         //delete first spaces
-        for (int i = 0; i < string.length()&&first; i++) 
-        {
-            char  check=string.charAt(i);
-            if (!(check==' ')) {
-                break;
-                
-
-            }else{
-                count++;
-            }
-
+        char  checkforspaces=string.charAt(spacecount);
+        while (!(checkforspaces==' ')) {
+            checkforspaces++;
+            
         }
+        checkforspaces=string.charAt(spacecount);
+        count=spacecount;
         //change the  first word to small  letters
-        for (int i = count+1; i < string.length()&&stop; i++) 
-        {
-            char  check=string.charAt(i);
-            if ((check==' ')) {
-                stop=false;
-                break;
-            }
+        while (!(checkforspaces==' ')) {
+            
+            char  check=string.charAt(count);
             if ((check>='A'&&check<='Z')){
         
                 str=str+ (char)(check+32);
@@ -101,12 +93,10 @@ public class StringOps {
                 count++;
                 
             }
-            
-            
-
         }
+        
         //advance to the rest of the words and changes the first letter only to capital
-        for (int i = count+1; i < string.length(); i++) 
+        for (int i = count; i < string.length(); i++) 
         {
             char  check=string.charAt(i);
             if ((!(check==' '))) {
