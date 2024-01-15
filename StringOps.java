@@ -25,31 +25,30 @@ public class StringOps {
         
     }
 
-    public static String capVowelsLowRest (String string) {
-       
-        String vowels="aeiou";
+    public static String capVowelsLowRest (String string){
+        String vowels = "aeiouAEIOU";
         String str ="";
         for (int i = 0; i < string.length(); i++) {
-            char  check=string.charAt(i);
-            if (!(check==' ')) {
-                if (!(vowels.indexOf(check)==-1)) {
-                    str=str+ (char)(check-32);
-                }else if (check>='A'&&check<='Z') {
-                    str=str+ (char)(check+32);
-                }else {
+            char check = string.charAt(i);
+            if (vowels.indexOf(check) != -1) {
+                // Convert to uppercase using ASCII values
+                if (check >= 'a' && check <= 'z') {
+                    str=str+((char)(check - 32));
+                } else {
                     str+=str;
-    
                 }
-            }else{
-                str+=str;
+            } else {
+                // Convert to lowercase using ASCII values
+                if (check >= 'A' && check <= 'Z') {
+                    str=str+((char)(check + 32));
+                } else {
+                    str+=str;
+                }
             }
-           
-
         }
-
-
         return str;
     }
+    
 
     public static String camelCase (String string) {
         
