@@ -54,80 +54,27 @@ public class StringOps {
 
     public static String camelCase (String string) {
         
-        int count=0;
-        String str ="";
-        boolean stop=true;
-        boolean first=true;
-        int firstlet=0;
-        int spacecount=0;
-        //takes care of short words
-        if (str.length()==1) {
-            char  check=string.charAt(1);
-            if (check>='A'&&check<='Z') {
-                return str=str+ (char)(check+32);
-
-            }
-
-            return string;
-        }
-        //delete first spaces
-        char  checkforspaces=string.charAt(spacecount);
-        while ((checkforspaces==' ')) {
-            checkforspaces=string.charAt(spacecount);
-            checkforspaces++;
-            
-        }
-        checkforspaces=string.charAt(spacecount);
-        count=spacecount;
-        //change the  first word to small  letters
-        while (!(checkforspaces==' ')) {
-            
-            char  check=string.charAt(count);
-            if ((check>='A'&&check<='Z')){
+       
+      String result = "";
+      boolean newWord = true;
         
-                str=str+ (char)(check+32);
-                count++;
-
-            }else{
-
-                str+=check;
-                count++;
-                
-            }
-        }
-        
-        //advance to the rest of the words and changes the first letter only to capital
-        for (int i = count; i < string.length(); i++) 
-        {
-            char  check=string.charAt(i);
-            if ((!(check==' '))) {
-                if (firstlet==0) {
-                    if ((check>='a'&&check<='z')) {
-                        str=str+ (char)(check-32);
-                        firstlet++;
-        
-                    }else  {
-                        str+=check;
-                        firstlet++;
+      for (int i = 0; i < string.length(); i++) {
+                char c = string.charAt(i);
+                if (c == ' ') {
+                    newWord = true;
+                } else {
+                    if (newWord) {
+                        result += Character.toUpperCase(c);
+                        newWord = false;
+                    } else {
+                        result += Character.toLowerCase(c);
                     }
-                }else if ((check>='A'&&check<='Z')) {
-                    str=str+ (char)(check+32);
-                }else{
-                    str+=check;
                 }
-
-                
-            }else{
-                firstlet=0;
-            }
-
-           
-        }
-
-
-
-        return str;
+         }
+        
+            return result;
     }
+        
 
     public static int[] allIndexOf (String string, char chr) {
 
