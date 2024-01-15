@@ -25,18 +25,97 @@ public class StringOps {
         
     }
 
-    public static String capVowelsLowRest (String string) {
-        // Write your code here:
-        return "";
+    public static String capVowelsLowRest (String string){
+        String vowels = "aeiouAEIOU";
+        String str ="";
+        for (int i = 0; i < string.length(); i++) {
+            char check = string.charAt(i);
+            if (vowels.indexOf(check) != -1) {
+                // Convert to uppercase using ASCII values
+                if (check >= 'a' && check <= 'z') {
+                    str=str+((char)(check - 32));
+                } else {
+                    str+=check;
+                }
+            }else if (check >= 'A' && check <= 'Z') {
+                // Convert to lowercase using ASCII values
+                str=str+((char)(check + 32));
+            } else {
+                str+=check;
+            } 
+                
+                
+            
+            
+        }
+        return str;
     }
+    
 
-    public static String camelCase (String string) {
-        // Write your code here:
-        return "";
+    public static String camelCase(String string) {
+        String result = "";
+        boolean newWord = true;
+    
+        for (int i = 0; i < string.length(); i++) {
+            char c = string.charAt(i);
+            if (c == ' ') {
+                newWord = true;
+            } else {
+                if (newWord && result=="") {
+                    if (c>='A'&&c<='Z') {
+                        result=result+((char)(c + 32));
+                    }else  {
+                        result+=c;
+                    }
+                    
+                    newWord = false;
+                } else if (newWord) {
+                    if (c>='a'&&c<='z') {
+                        result=result+((char)(c - 32));
+                    }else  {
+                        result+=c;
+                    }
+                    newWord = false;
+                } else {
+                    if (c>='A'&&c<='Z') {
+                        result=result+((char)(c + 32));
+                    }else  {
+                        result+=c;
+                    }
+                    
+                }
+            }
+        }
+    
+        return result;
     }
+    
+        
 
     public static int[] allIndexOf (String string, char chr) {
-        // Write your code here:
-        return new int[1];
+
+        int len=0;
+        int index=0;
+        for (int i = 0; i < string.length(); i++) 
+        {
+            char check=string.charAt(i);
+            if (check==chr) {
+                len++;
+
+            }
+        }
+        int[] loc=new int[len];
+        for (int i = 0; i < string.length(); i++) 
+        {
+            char  check=string.charAt(i);
+            if (check==chr) {
+                loc[index]=i;
+                index++;
+
+            }
+        }
+
+
+        return loc;
     }
 }
