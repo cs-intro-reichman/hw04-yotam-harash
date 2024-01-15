@@ -37,14 +37,16 @@ public class StringOps {
                 } else {
                     str+=check;
                 }
-            } else {
+            }else if (check >= 'A' && check <= 'Z') {
                 // Convert to lowercase using ASCII values
-                if (check >= 'A' && check <= 'Z') {
-                    str=str+((char)(check + 32));
-                } else {
-                    str+=check;
-                }
-            }
+                str=str+((char)(check + 32));
+            } else {
+                str+=check;
+            } 
+                
+                
+            
+            
         }
         return str;
     }
